@@ -63,6 +63,9 @@ module.exports = {
     }),
     new webpack.HotModuleReplacementPlugin() // HRM功能开启--热更新(样式等变动不会重新加载页面)
   ],
+  optimization: {
+    usedExports: true // tree shaking 只支持ES Module
+  },
   output: {
     publicPath: '/',
     filename: '[name].js',

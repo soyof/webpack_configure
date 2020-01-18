@@ -1,5 +1,6 @@
 {
   "name": "webpack-demo",
+  "sideEffects": ["@babel/polly-fill", "*.css"],
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
