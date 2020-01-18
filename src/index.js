@@ -1,4 +1,3 @@
-import '@babel/polyfill'
 import avatar from './assets/images/avatar.jpg'
 
 const img = new Image()

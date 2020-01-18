@@ -283,7 +283,8 @@ module.exports = {
   },
   // 指定javaScript语言类型和风格，sourceType用来指定js导入的方式，默认是script，此处设置为module，指某块导入方式
   parserOptions: {
-    parser: "babel-eslint"
+    parser: "babel-eslint",
+    sourceType: 'module' // 按照模块的方式解析
   }
 }
 

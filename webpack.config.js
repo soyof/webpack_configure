@@ -40,19 +40,15 @@ module.exports = {
       }
     }, {
       test: /\.css$/, use: ['style-loader', 'css-loader']
-    }, { // es6转es5
+    }, { // es6转es5, ui类开发使用@babel/plugin-transform-runtime插件转换语法
       test: /\.js$/,
       exclude: /node_modules/,
       loader: 'babel-loader'
-      // options: {
-      //   presets: [['@babel/preset-env', {
-      //     useBuiltIns: 'usage' // 将用到的es6转为es5, 无需将没用到的es6语法转换打包
-      //   }]] // es6转es5必要插件
-      // }
     }]
   },
   plugins: [
     new CleanWebpackPlugin(),
+    // eslint-disable-next-line new-cap
     new htmlWebpackPlugin({
       minify: { // 压缩HTML文件
         removeComments: true, // 移除HTML中的注释
