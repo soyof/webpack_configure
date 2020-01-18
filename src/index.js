@@ -7,7 +7,6 @@ const root = document.querySelector('#app')
 root.append(img)
 
 import { add } from './common'
-
 add(5, 6)
 
 // import fn from './fn'
