@@ -1,3 +1,4 @@
+import _ from 'loadsh'
 import avatar from './assets/images/avatar.jpg'
 
 const img = new Image()
@@ -8,6 +9,8 @@ root.append(img)
 
 import { add } from './common'
 add(5, 6)
+
+console.log(_.join([1, 2, 3], ','))
 
 // import fn from './fn'
 // if (module.hot) {
