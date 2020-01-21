@@ -1,6 +1,6 @@
-const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const webpack = require('webpack')
 
 module.exports = {
   entry: {
@@ -18,8 +18,6 @@ module.exports = {
           limit: 204800
         }
       }
-    }, {
-      test: /\.css$/, use: ['style-loader', 'css-loader']
     }, { // es6转es5
       test: /\.js$/,
       exclude: /node_modules/,
@@ -40,9 +38,13 @@ module.exports = {
         minifyCSS: true// 压缩内联css
       },
       template: 'public/index.html'
+    }),
+    new webpack.ProvidePlugin({ // 第三方模块通用配置(shimming)
+      $: 'jquery'
     })
   ],
   optimization: {
+    usedExports: true, // tree shaking(tree shaking 是 DCE 的一种方式，它可以在打包时忽略没有用到的代码) 只支持ES Module  需在package.json文件中配置sideEffects参数, 表示对某一文件不进行tree shaking处理
     splitChunks: {
       chunks: 'all',
       // minSize: 30000, // 模块的最小体积
@@ -65,10 +67,5 @@ module.exports = {
         }
       }
     }
-  },
-  output: {
-    publicPath: '/',
-    filename: '[name].js',
-    path: path.resolve(__dirname, 'dist')
   }
 }

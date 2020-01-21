@@ -1,3 +1,4 @@
+const path = require('path')
 const webpack = require('webpack')
 const merge = require('webpack-merge')
 const commonConfig = require('./webpack.common')
@@ -22,11 +23,21 @@ const devConfig = {
       }
     }
   },
+  module: {
+    rules: [
+      {
+        test: /\.css$/, use: ['style-loader', 'css-loader']
+      }
+    ]
+  },
   plugins: [
     new webpack.HotModuleReplacementPlugin() // HRM功能开启--热更新(样式等变动不会重新加载页面)
   ],
-  optimization: {
-    usedExports: true // tree shaking 只支持ES Module
+  output: {
+    // publicPath: './',
+    filename: '[name].js',
+    chunkFilename: '[name].js',
+    path: path.resolve(__dirname, 'dist')
   }
 }
 
