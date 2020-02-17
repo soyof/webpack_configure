@@ -1,7 +1,7 @@
-const path = require('path')
-const webpack = require('webpack')
-const merge = require('webpack-merge')
-const commonConfig = require('./webpack.common')
+const path = require('path');
+const webpack = require('webpack');
+const merge = require('webpack-merge');
+const commonConfig = require('./webpack.common');
 
 const devConfig = {
   mode: 'development',
@@ -19,26 +19,26 @@ const devConfig = {
     proxy: { // 代理配置
       '/api': {
         target: 'http://127.0.0.1:8080', // 接口域名
-        changeOrigin: true // 是否跨域
-      }
-    }
+        changeOrigin: true, // 是否跨域
+      },
+    },
   },
   module: {
     rules: [
       {
-        test: /\.css$/, use: ['style-loader', 'css-loader']
-      }
-    ]
+        test: /\.css$/, use: ['style-loader', 'css-loader'],
+      },
+    ],
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin() // HRM功能开启--热更新(样式等变动不会重新加载页面)
+    new webpack.HotModuleReplacementPlugin(), // HRM功能开启--热更新(样式等变动不会重新加载页面)
   ],
   output: {
     // publicPath: './',
     filename: '[name].js',
     chunkFilename: '[name].js',
-    path: path.resolve(__dirname, 'dist')
-  }
-}
+    path: path.resolve(__dirname, 'dist'),
+  },
+};
 
-module.exports = merge(commonConfig, devConfig)
+module.exports = merge(commonConfig, devConfig);
